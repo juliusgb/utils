@@ -6,4 +6,5 @@ param()
 Export-ModuleMember -Function @(
     'Get-UrlStatusCode'
     'Get-UrlRedirect'
+    'Get-UrlRedirectionTargets'
 )
