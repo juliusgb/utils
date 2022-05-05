@@ -2,7 +2,7 @@
 
 Utilities that I've found helpful and often use.
 
-## PowerShell
+## Setup PowerShell
 
 Those for PowerShell are kept as a Module.
 
@@ -21,7 +21,7 @@ New-Item -ItemType SymbolicLink `
 Output should be:
 
 ```powershell
-  Verzeichnis: C:\Program Files\WindowsPowerShell\Modules
+  Directory: C:\Program Files\WindowsPowerShell\Modules
 
 Mode          LastWriteTime         Length Name
 ----          -------------         ------ ----
@@ -38,7 +38,7 @@ Script     1.0.1      Microsoft.PowerShell.Operation.V... {Get-OperationValidati
 ```
 
 My first attempt at running them on my windows laptop didn't work because of
-the [PowerShell's execution policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2)
+[PowerShell's execution policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2)
 
 When I checked the policies on my laptop with `Get-ExecutionPolicy`,
 the output was `Restricted`.
@@ -49,5 +49,5 @@ allows me to run these utilities.
 
 So far, that works for me.
 
-It mighe also be necessary to elevate the permissions for the whole machine or user,
+It might also be necessary to elevate the permissions for the whole machine or user,
 especially when installing modules through automation.

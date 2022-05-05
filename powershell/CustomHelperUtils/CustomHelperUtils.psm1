@@ -1,8 +1,9 @@
 [CmdletBinding()]
 param()
 
-. $PSScriptRoot\CheckHelpers.ps1
+. $PSScriptRoot\UrlHelpers.ps1
 
 Export-ModuleMember -Function @(
     'Get-UrlStatusCode'
+    'Get-UrlRedirect'
 )
