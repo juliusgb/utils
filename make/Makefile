@@ -1,16 +1,15 @@
-# Detect which OS this Makefile is running on
-# from https://stackoverflow.com/a/14777895
-ifeq '$(findstring ;,$(PATH))' ';'
-    detected_OS := Windows
-else
-    detected_OS := $(shell uname 2>/dev/null || echo Unknown)
-    detected_OS := $(patsubst CYGWIN%,Cygwin,$(detected_OS))
-    detected_OS := $(patsubst MSYS%,MSYS,$(detected_OS))
-    detected_OS := $(patsubst MINGW%,MSYS,$(detected_OS))
-endif
+.PHONY: default-start
 
-ifeq ($(detected_OS),Windows)
-    $env:POWERSHELL_ENV_VAR = '1234'
-else
-    export UNIX_ENV_VAR="1234"
-endif
+default-start:
+    ifeq ($(OS),Windows_NT)
+		$(MAKE) -f Makefile-Windows
+    else
+		$(MAKE) init
+    endif
+
+init:
+    ifeq ($(var),foo)
+		@echo $(var) "bar"
+    else
+		@echo "others"
+    endif
