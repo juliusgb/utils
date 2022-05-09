@@ -1,0 +1,25 @@
+# When on Windows, use PowerShell Core as default shell. Otherwise, use system's default shell.
+# from https://stackoverflow.com/a/63840549
+# and https://stackoverflow.com/a/61772881
+ifeq ($(OS),Windows_NT)
+	SHELL := pwsh.exe
+	.SHELLFLAGS := -NoProfile -Command
+endif
+
+VAR=asdf/asdf
+
+# see https://www.gnu.org/software/make/manual/make.html#Phony-Targets
+.PHONY: get-var
+
+# @&Write-Output $(VAR)
+#	`&` forces make to invoke the shell.
+#	`Make` will not invoke shell if it's not convinced that shell is required.
+#	It will be convinced if the command includes any of the predefined commands or characters:
+#	Parentheses and Ampersand trigger the need for shell.
+#	Otherwise, `make` believes that `Write-Output` is a binary to run,
+#	so it tries to invoke it directly with CreateProcess
+# $$PSVersionTable:
+#	first dollar sign is an escape character for second one
+get-var:
+	@&Write-Output $(VAR)
+	@$$PSVersionTable
