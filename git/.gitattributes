@@ -1,0 +1,6 @@
+# Use [Git attributes](https://git-scm.com/docs/gitattributes) to control how
+# files are checked out and checked in
+# via https://github.com/stoplightio/spectral/commit/5459fe1fc7ff903b8702e8f5c0690d6d3b7c9518
+# Every text file is checked out with LF line endings in the working directory (eol=lf)
+# Every potentially introduced CRLF in a text file will be converted back to LF on staging (* text=auto)
+* text=auto eol=lf
