@@ -1,0 +1,59 @@
+# copy to ~/.gitconfig
+
+[init]
+    defaultBranch = main
+[core]
+	autocrlf = input
+	safecrlf = warn
+# vscode makes mergetool and difftool settings obsolete
+[mergetool]
+    prompt = false
+    keepBackup = false
+    keepTemporaries = false
+[merge]
+    tool = winmerge
+[mergetool "winmerge"]
+    name = WinMerge
+    trustExitCode = true
+    cmd = "/c/opt/WinMerge/WinMergeU.exe" -u -e -dl \"Local\" -dr \"Remote\" $LOCAL $REMOTE $MERGED
+[diff]
+    tool = winmerge
+[difftool "winmerge"]
+    name = WinMerge
+    trustExitCode = true
+    cmd = "/c/opt/WinMerge/WinMergeU.exe" -u -e $LOCAL $REMOTE
+[alias]
+  # list aliases
+  ala = "!git config -l | grep alias | cut -c 7-"  
+  b = branch
+  # list branches sorted by last modified
+  br = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+  # delete all branches that are not main
+  bd = "!git branch | grep -v main | xargs git branch -D"
+  ca = commit -a --verbose
+  cam = commit -a -
+  cane = commit --amend --no-edit
+  cm = commit -m
+  co = checkout
+  cob = checkout -b
+  com = checkout main
+  d = diff
+  ds = diff --stat
+  dc = diff --cached
+  l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  last = log -1 HEAD
+  lo = log --oneline -n 10
+  # check out a particular merge request from any repository and any remote.
+  # to check out the merge request with ID 5 as shown in GitLab from the upstream remote, do git mr upstream 5
+  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+  pl = pull
+  plr = pull --rebase
+  po = "!git pull origin $1"
+  ps = push
+  pushall = "!git remote | xargs -L1 git push --all"
+  # undo last commit but keep changes around
+  rs = reset --soft HEAD~1 
+  s = status -s
+  st = status
+  upsync = fetch upstream && co master && merge upstream/  
+  
