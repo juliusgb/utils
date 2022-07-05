@@ -3,8 +3,9 @@ root = true
 [*]
 # The files are utf-8 encoded
 charset = utf-8
-# Use spaces for indentation
-indent_style = space
+# Use tabs for indentation
+# see https://alexandersandberg.com/articles/default-to-tabs-instead-of-spaces-for-an-accessible-first-environment/
+indent_style = tab
 # Use Unix line endings
 end_of_line = lf
 # No whitespace at the end of line
