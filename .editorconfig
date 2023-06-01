@@ -13,6 +13,10 @@ trim_trailing_whitespace = true
 # A file must end with an empty line - this is good for version control systems
 insert_final_newline = true
 
+#########################
+# File Extension Settings
+#########################
+
 [{Makefile*,**.mk}]
 # Use tabs for indentation (Makefiles require tabs)
 indent_style = tab
@@ -28,6 +32,11 @@ indent_size = 4
 indent_size = 2
 
 # 2 space indentation
-[*.{y{a,}ml}]
+[*.{yml,yaml}]
 indent_style = space
 indent_size = 2
+
+# Two spaces at the end of a line in Markdown mean "new line",
+# so trimming trailing whitespace for such files can cause breakage.
+[*.md]
+trim_trailing_whitespace = false
